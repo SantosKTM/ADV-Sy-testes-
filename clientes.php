@@ -159,6 +159,10 @@ $result = $conn->query($sql);
             display: flex;
         }
 
+        a img {
+            width: 60px;
+        }
+
         .overlay {
             display: none;
             position: fixed;
@@ -172,13 +176,13 @@ $result = $conn->query($sql);
             align-items: center;
         }
 
-
     </style>
+    
 </head>
 <body>
-    
+
 <div class="container">
-    <a href="formularios.html"><img src="img\botao-home.png" alt=""></a>
+    <a href="formularios.html"><img src="img/logo principal.png" alt="Logo Principal"></a>
     
     <div class="topo">
         <h1>Clientes</h1>

@@ -52,28 +52,42 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img\icon redondo logo.png">
+    <link rel="icon" href="img/icon redondo logo.png">
     <title>Login</title>
     <link rel="stylesheet" href="/css/style-login.css">
+    <style>
+        .password-container {
+            position: relative;
+        }
+        .password-container input {
+            width: calc(100% - 40px); /* Ajuste conforme necessário */
+            padding-right: 40px;
+        }
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="img-container">
-            <img src="img\logo principal.png" alt="">
+            <img src="img/logo principal.png" alt="">
         </div>
         <div class="conteudo-container">
-
             <h1>Entrar</h1>
-
-
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div>
                     <label for="cpf">CPF:</label>
                     <input type="text" name="cpf" id="cpf" required>
                 </div>
-                <div>
+                <div class="password-container">
                     <label for="password">Senha:</label>
                     <input type="password" name="password" id="password" required>
+                    <img class="toggle-password" id="togglePassword" src="img/eye.png" alt="Toggle Password" onclick="togglePassword()">
                 </div>
                 <div class="links-opcoes">
                     <div>
@@ -84,11 +98,6 @@ $conn->close();
                     <input type="submit" value="Login">
                 </div>
             </form>
-            <div class="links-opcoes">
-                <div>
-                    <p>Novo cadastro? <a class = "cadatsro" href="http://localhost/novo-adv.html"><span>Registrar</span></a></p>
-                </div>
-            </div>
         </div>
         <?php
         // Exibir mensagem de erro, se houver
@@ -97,6 +106,18 @@ $conn->close();
         }
         ?>
     </div>
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var togglePassword = document.getElementById("togglePassword");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.src = "/mostrar.png";
+            } else {
+                passwordInput.type = "password";
+                togglePassword.src = "/esconder.png";
+            }
+        }
+    </script>
 </body>
 </html>
-
